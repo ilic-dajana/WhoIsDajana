@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Project for training TinyLlama model with custom dataset",
+    "version": "1.0.0",
+    "title": "Who-is-Dajana-TinyLllama-REST"    
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+        "/request":{
+            "get":{
+                "tags": [
+                    "Model"
+                    ],
+                "summary": "Returns nothing",
+                "responses": {
+                    "200": {
+                        "description": "OK"                                             
+                    }
+                }
+            }
+        }    
+    },
+    "components":{
+        "schemas":{
+            "id": {
+                "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        }
+        }
+    }
+}
