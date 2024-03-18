@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Who-is-Dajana-TinyLllama-REST",
+    "description": "API for handling file upload for creating dataset, model training using TinyLlama 1.1B, and creating message response for chat prompt",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/upload-file": {
+      "post": {
+        "summary": "Upload a file to create new dataset for model training",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File uploaded successfully"
+          },
+          "500": {
+            "description": "Error uploading file"
+          }
+        }
+      }
+    },
+    "/train-model": {
+      "get": {
+        "summary": "Train the model with dataset that is provided with uploaded files",
+        "responses": {
+          "200": {
+            "description": "Model trained successfully"
+          },
+          "500": {
+            "description": "Error training model"
+          }
+        }
+      }
+    },
+    "/get-reply": {
+      "post": {
+        "summary": "Get reply for the input message from the trained model",
+        "consumes": ["multipart/form-data"],
+         "parameters": [
+          {
+            "name": "message",
+            "in": "formData",
+            "description": "File to upload",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response received successfully"
+          },
+          "500": {
+            "description": "Error getting response"
+          }
+        }
+      }
+    },
+    "/metrics":{
+        "get": {
+          "summary": "Gets the latest metrics",
+          "responses": {
+            
+          }
+        }
+    }
+  }
+}

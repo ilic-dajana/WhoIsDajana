@@ -70,6 +70,8 @@ def start_training_model():
 
     
 def get_response(message):
+    if(not global_var):
+        return ""
     pipe = pipeline(task="text-generation",
                 model=global_var,
                 tokenizer=tokenizer,
@@ -86,8 +88,7 @@ def get_dataset():
     data = Dataset.from_pandas(pd.read_csv(FILE_PATH_LOCATION + "dataset.csv"))
     data_df = pd.DataFrame(data)  
     
-    data_df["text"] = data_df.apply(lambda x: f"<|user|>\n{x['user']}</s>\n<|assistant|>\n{x['assistant']}</s>", axis=1)
-    data_df.to_csv("output.csv", index=False)
+    data_df["text"] = data_df.apply(lambda x: f"<|user|>\n{x['user']}</s>\n<|assistant|>\n{x['assistant']}</s>", axis=1)    
     dataset = Dataset.from_pandas(data_df)
     return dataset
     
